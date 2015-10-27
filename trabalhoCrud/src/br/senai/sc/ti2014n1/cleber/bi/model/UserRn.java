@@ -22,6 +22,10 @@ public class UserRn {
 			throw new Exception("O E-mail Ã© obrigatÃ³rio!");
 		}
 		
+		if (user.getSenha().trim().isEmpty()) {
+			throw new Exception("A senha é obrigatória!");
+		}
+		
 		dao.salvar(user);
 	}
 
@@ -36,5 +40,10 @@ public class UserRn {
 	public void excluir(Long id) throws Exception {
 		dao.excluir(id);
 	}
+	
+	public User buscaPorEmail(String email) { 
+		 		return dao.buscaPorEmail(email); 
+		 	} 
+
 
 }

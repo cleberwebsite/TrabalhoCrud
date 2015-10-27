@@ -8,22 +8,22 @@ import javax.faces.bean.ManagedBean;
 import br.senai.sc.ti2014n1.cleber.bi.model.UserRn;
 import br.senai.sc.ti2014n1.cleber.bi.model.dominio.User;
 
-@ManagedBean 
+@ManagedBean
 public class UserMB {
 	private List<User> usuarios;
 	private User user;
 	private UserRn rn;
-	
+
 	@PostConstruct
-	public void init(){
+	public void init() {
 		rn = new UserRn();
 		user = new User();
 	}
 
 	public List<User> getUsuarios() {
-		if(usuarios == null){
+		if (usuarios == null) {
 			usuarios = rn.listar();
- 		}
+		}
 		return usuarios;
 	}
 
@@ -38,8 +38,8 @@ public class UserMB {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	public String salvar(){
+
+	public String salvar() {
 		try {
 			rn.salvar(user);
 		} catch (Exception e) {
@@ -47,8 +47,8 @@ public class UserMB {
 		}
 		return "userlist";
 	}
-	
-	public String excluir(String idParam){
+
+	public String excluir(String idParam) {
 		Long id = Long.parseLong(idParam);
 		try {
 			rn.excluir(id);
@@ -58,11 +58,11 @@ public class UserMB {
 		}
 		return "";
 	}
-	
-	public String editar(String idParam){
+
+	public String editar(String idParam) {
 		Long id = Long.parseLong(idParam);
 		user = rn.buscarPorId(id);
 		return "userform";
 	}
-	
+
 }
