@@ -3,14 +3,13 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 
-
 <ui:composition template="/WEB-INF/template/padrao.xhtml">
 	<ui:define name="conteudo">
 		<h1>Usuarios</h1>
 
 		<h:link outcome="/admin/userform">Adicionar</h:link>
 		<h:form>
-			<h:dataTable border ="1" value="#{userMB.usuarios}" var="user">
+			<h:dataTable value="#{userMB.usuarios}" var="user">
 				<h:column>
 					<f:facet name="header">ID</f:facet>
 					<h:outputText value="#{user.id}" />
@@ -34,5 +33,4 @@
 		</h:form>
 	</ui:define>
 </ui:composition>
-
 </html>
